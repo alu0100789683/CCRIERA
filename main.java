@@ -16,7 +16,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AlgorithmHandler a = new AlgorithmHandler("org.dionizdev.Knapsack", 10,5);
+        AlgorithmHandler a = new AlgorithmHandler("org.dionizdev.Knapsack_dinamic", 10,5);
         a.generate_test();
         long time = System.nanoTime();
         a.run();

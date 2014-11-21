@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author eduardo
  */
-public class Knapsack extends Algorithm{
+public class Knapsack_greedy extends Algorithm{
     
     private final int n;
     private int w;
@@ -33,7 +33,7 @@ public class Knapsack extends Algorithm{
     
     private long time;
     
-    public Knapsack(int n, String test_output){
+    public Knapsack_greedy(int n, String test_output){
         this.n = n;
         this.w = 0;
         this.ratio = 0.7;
@@ -46,7 +46,7 @@ public class Knapsack extends Algorithm{
         this.generate_test();
     }
     
-    public Knapsack(int n, String test_output, double ratio, int vlimit, int wlimit){
+    public Knapsack_greedy(int n, String test_output, double ratio, int vlimit, int wlimit){
         this.n = n;
         this.w = 0;
         this.ratio = ratio;
@@ -87,7 +87,7 @@ public class Knapsack extends Algorithm{
             fw.flush();
             fw.close();
         } catch (IOException ex) {
-            Logger.getLogger(Knapsack.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Knapsack_greedy.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -106,7 +106,7 @@ public class Knapsack extends Algorithm{
             fw.flush();
             fw.close();
         } catch (IOException ex) {
-            Logger.getLogger(Knapsack.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Knapsack_greedy.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
