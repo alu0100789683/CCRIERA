@@ -116,14 +116,16 @@ public class Knapsack_greedy extends Algorithm{
     }
     @Override
     public void run() {
-        long time_aux = System.nanoTime();
+        TimeHandler timer = new TimeHandler();
+        timer.start();
         for (int i = 0; i < n; i++) {
             if(result_weight + vpMatrix[i][1] <= wlimit ){
                 result_value += vpMatrix[i][0];
                 result_weight += vpMatrix[i][1];
             }
         }
-        time = System.nanoTime() - time_aux;
+        timer.stop();
+        time = timer.last();
     }
 
     public void sort(double [][] unarray, int lalong){

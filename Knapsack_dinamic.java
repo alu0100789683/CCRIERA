@@ -44,10 +44,10 @@ public class Knapsack_dinamic extends Algorithm{
         this.wlimit = 10;
         
         this.test_output = test_output;
-        this.vpMatrix = new double[n][3];
+        this.vpMatrix = new double[this.n][3];
         this.generate_test();
         
-        this.pd_matrix  = new int[w+1][n+1];
+        this.pd_matrix  = new int[this.n+1][this.w+1];
     }
     
     public Knapsack_dinamic(int n, String test_output, double ratio, int vlimit, int wlimit){
@@ -58,11 +58,10 @@ public class Knapsack_dinamic extends Algorithm{
         this.wlimit = wlimit;
         
         this.test_output = test_output;
-        this.vpMatrix = new double[n][3];
-        
+        this.vpMatrix = new double[this.n][3];
         this.generate_test();
         
-        this.pd_matrix  = new int[w+1][n+1];
+        this.pd_matrix  = new int[this.n+1][this.w+1];
     }
     
     @Override
@@ -116,6 +115,7 @@ public class Knapsack_dinamic extends Algorithm{
                 }
                 fw.write("\n");
             }
+            
             fw.flush();
             fw.close();
         } catch (IOException ex) {
@@ -131,28 +131,24 @@ public class Knapsack_dinamic extends Algorithm{
     public void run() {
         long time_aux = System.nanoTime();
         //Inicializar a 0
-        for (int i = 0; i <= w; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <=w; j++) {
                 this.pd_matrix[i][j] = 0;
             }
         }
-        
         //Algoritmo
-        for (int i = 1; i <= w; i++) {
-            for (int j = 1; j <= n; j++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= w; j++) {
+               
                 //si el peso del objeto mayor que capacidad
-                if(i-1 < vpMatrix[j-1][1]){
+                if(j < vpMatrix[i-1][1]){
                     pd_matrix[i][j] = pd_matrix[i-1][j];
-                }else{
+                }else{              
                     //PESO posicion
-                    int wo = (int) ((i-1) - vpMatrix[j-1][1]);
-                    System.out.println("PesoMax: "+w+" Compruebo: "+wo);
-                    System.out.println("PesoObj: "+vpMatrix[j-1][1]);
-                    if(pd_matrix[i-1][j] >= pd_matrix[i-1][wo] + vpMatrix[j-1][0]){
-                        pd_matrix[i][j] = pd_matrix[i-1][j];
-                    }else{
-                        pd_matrix[i][j] = (int) (pd_matrix[i-1][wo] + vpMatrix[j-1][0]);
-                    }
+                    
+                    int wo = (int) (j - vpMatrix[i-1][1]);
+                    pd_matrix[i][j] = (int)Math.max(pd_matrix[i-1][j], pd_matrix[i-1][wo] + vpMatrix[i-1][0]);
+                    
                 }
             }
         }

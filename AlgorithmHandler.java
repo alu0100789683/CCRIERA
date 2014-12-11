@@ -36,7 +36,7 @@ public class AlgorithmHandler {
                                    String.class
                                 ).newInstance(
                                    this.num_n,
-                                   "src/output/out_"+i
+                                   "src/output/"+this.class_str+"/out_"+i
                                 );
             } 
         } catch (Exception ex) {

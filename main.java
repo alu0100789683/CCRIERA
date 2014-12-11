@@ -16,13 +16,16 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AlgorithmHandler a = new AlgorithmHandler("org.dionizdev.Knapsack_dinamic", 10,5);
-        a.generate_test();
-        long time = System.nanoTime();
-        a.run();
-        long timew = System.nanoTime() - time;
-        System.out.println("Tiempo de ejecución total: " + timew + "ns");
-        a.output_toFile();
+        TimeHandler timer = new TimeHandler();
+        AlgorithmHandler algorithm = new AlgorithmHandler("org.dionizdev.Knapsack_dinamic", 10,5);
+        algorithm.generate_test();
+        
+        timer.start();
+            algorithm.run();
+        timer.stop();
+        
+        System.out.println("Tiempo de ejecución total: " + timer.last() + "ns");
+        algorithm.output_toFile();
     }
     
 }
